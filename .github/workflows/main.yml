@@ -1,4 +1,4 @@
-name: test-containers-CI
+name: spark-test-containers-CI
 on: push
 permissions:
   contents: read
