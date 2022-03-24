@@ -1,0 +1,22 @@
+version: '3.6'
+
+services:
+  jobs_executor:
+    container_name: jobs_executor
+    build:
+      context: .
+      dockerfile: container/Dockerfile
+    environment:
+      - SPARK_MODE=master
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+    volumes:
+      - ${PWD}:/code
+    ports:
+      - "8080:8080"
+    networks:
+        - job-net
+networks:
+  job-net:

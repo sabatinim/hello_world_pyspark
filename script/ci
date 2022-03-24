@@ -1,0 +1,12 @@
+#!/bin/bash
+trap state ERR EXIT
+
+function state() {
+  exit $?
+}
+
+echo "Building containers"
+docker-compose build jobs_executor
+
+echo "Running tests container"
+docker-compose run jobs_executor pytest
