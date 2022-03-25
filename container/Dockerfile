@@ -13,3 +13,4 @@ RUN pip3 install --no-cache-dir --upgrade -r /code/requirements.txt
 
 COPY ./jobs /code/jobs
 ENV PYSPARK_PYTHON=python3
+RUN ln -s /usr/bin/python3 /usr/bin/python
