@@ -16,7 +16,7 @@ class TestApp(unittest.TestCase):
 
         WordCountJob(spark).execute(
             src="/code/raw/input.txt",
-            dst="/tmp/golden/data.parquet"
+            dst="/tmp/golden/output.parquet"
         )
 
         self.assertEqual([Row(word='one', count=4),
@@ -24,4 +24,4 @@ class TestApp(unittest.TestCase):
                           Row(word='three', count=3),
                           Row(word='four', count=1),
                           Row(word='five', count=1),
-                          Row(word='six', count=1)], spark.read.parquet("/tmp/golden/data.parquet").collect())
+                          Row(word='six', count=1)], spark.read.parquet("/tmp/golden/output.parquet").collect())
